@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:self_mute_app/models/global.dart';
 
+import 'models/global.dart';
+
 void main() {
   runApp(Home());
 }
@@ -12,7 +14,6 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   String msg = "Press button to start listening";
-  @override
   bool running = false;
 
   Widget build(BuildContext context) {
@@ -30,20 +31,28 @@ class _HomeState extends State<Home> {
             SizedBox(
               height: 25,
             ),
-            FlatButton(
-              padding: EdgeInsets.all(15),
-              color: running ? Colors.red : Colors.green,
-              child: Text(
-                running ? 'STOP' : 'START',
+            Container(
+              height: 70,
+              width: 200,
+              child: FlatButton(
+                padding: EdgeInsets.all(15),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(18.0),
+                ),
+                color: running ? Colors.red : Colors.green,
+                child: Text(
+                  running ? 'STOP' : 'START',
+                  style: buttonTextStyle,
+                ),
+                onPressed: () {
+                  setState(
+                    () {
+                      running = running ? false : true;
+                      _changeText();
+                    },
+                  );
+                },
               ),
-              onPressed: () {
-                setState(
-                  () {
-                    running = running ? false : true;
-                    _changeText();
-                  },
-                );
-              },
             )
           ],
         ),

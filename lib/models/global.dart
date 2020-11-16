@@ -18,5 +18,5 @@ TextStyle contextStyle = new TextStyle(
 TextStyle buttonTextStyle = new TextStyle(
     fontFamily: 'Avenir',
     fontWeight: FontWeight.bold,
-    color: redColor,
-    fontSize: 20);
+    color: Colors.white,
+    fontSize: 35);
