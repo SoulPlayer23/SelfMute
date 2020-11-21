@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:self_mute_app/models/global.dart';
-
+import 'package:self_mute_app/models/widgets/keyword_list.dart';
 import 'models/global.dart';
 
 void main() {
@@ -56,6 +56,14 @@ class _HomeState extends State<Home> {
             )
           ],
         ),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.auto_stories),
+          backgroundColor: redColor,
+          onPressed: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => KeywordPage()));
+          },
+        ),
       ),
     );
   }
@@ -70,5 +78,35 @@ class _HomeState extends State<Home> {
         }
       },
     );
+  }
+}
+
+class KeywordPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        backgroundColor: darkGreyColor,
+        appBar: AppBar(
+          title: Text(
+            'Keywords',
+            style: titleTextStyle,
+          ),
+          backgroundColor: darkGreyColor.withOpacity(1),
+          elevation: 0.0,
+        ),
+        body: Container(
+          child: ListView(
+            padding: EdgeInsets.only(top: 10),
+            children: getList(),
+          ),
+        ));
+  }
+
+  List<Widget> getList() {
+    List<KeywordList> list = [];
+    for (int i = 0; i < 10; i++) {
+      list.add(KeywordList());
+    }
+    return list;
   }
 }

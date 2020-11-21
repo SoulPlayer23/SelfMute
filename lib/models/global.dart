@@ -20,3 +20,15 @@ TextStyle buttonTextStyle = new TextStyle(
     fontWeight: FontWeight.bold,
     color: Colors.white,
     fontSize: 35);
+
+TextStyle titleTextStyle = new TextStyle(
+    fontFamily: 'Avenir',
+    fontWeight: FontWeight.bold,
+    color: redColor,
+    fontSize: 25);
+
+TextStyle keywordTextStyle = new TextStyle(
+    fontFamily: 'Avenir',
+    fontWeight: FontWeight.bold,
+    color: darkGreyColor,
+    fontSize: 35);
