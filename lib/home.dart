@@ -58,11 +58,13 @@ class _HomeState extends State<Home> {
         ),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.auto_stories),
-          backgroundColor: redColor,
-          onPressed: () {
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => KeywordPage()));
-          },
+          backgroundColor: running ? Colors.black26 : redColor,
+          onPressed: running
+              ? () {}
+              : () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => KeywordPage()));
+                },
         ),
       ),
     );
