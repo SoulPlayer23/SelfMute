@@ -32,3 +32,9 @@ TextStyle keywordTextStyle = new TextStyle(
     fontWeight: FontWeight.bold,
     color: darkGreyColor,
     fontSize: 35);
+
+TextStyle disabledTextStyle = new TextStyle(
+    fontFamily: 'Avenir',
+    fontWeight: FontWeight.bold,
+    color: darkGreyColor,
+    fontSize: 15);

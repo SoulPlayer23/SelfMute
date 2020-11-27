@@ -18,56 +18,66 @@ class _HomeState extends State<Home> {
 
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.dark(),
-      home: Scaffold(
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              msg,
-              textAlign: TextAlign.center,
-              style: selfMuteStyle,
-            ),
-            SizedBox(
-              height: 25,
-            ),
-            Container(
-              height: 70,
-              width: 200,
-              child: FlatButton(
-                padding: EdgeInsets.all(15),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(18.0),
-                ),
-                color: running ? Colors.red : Colors.green,
-                child: Text(
-                  running ? 'STOP' : 'START',
-                  style: buttonTextStyle,
-                ),
-                onPressed: () {
-                  setState(
-                    () {
-                      running = running ? false : true;
-                      _changeText();
-                    },
-                  );
-                },
+        theme: ThemeData.dark(),
+        home: Scaffold(
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                msg,
+                textAlign: TextAlign.center,
+                style: selfMuteStyle,
               ),
-            )
-          ],
-        ),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.auto_stories),
-          backgroundColor: running ? Colors.black26 : redColor,
-          onPressed: running
-              ? () {}
-              : () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => KeywordPage()));
-                },
-        ),
-      ),
-    );
+              SizedBox(
+                height: 25,
+              ),
+              Container(
+                height: 70,
+                width: 200,
+                child: FlatButton(
+                  padding: EdgeInsets.all(15),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18.0),
+                  ),
+                  color: running ? Colors.red : Colors.green,
+                  child: Text(
+                    running ? 'STOP' : 'START',
+                    style: buttonTextStyle,
+                  ),
+                  onPressed: () {
+                    setState(
+                      () {
+                        running = running ? false : true;
+                        _changeText();
+                      },
+                    );
+                  },
+                ),
+              )
+            ],
+          ),
+          floatingActionButton: new Builder(builder: (BuildContext context) {
+            return new FloatingActionButton(
+              child: Icon(Icons.auto_stories),
+              backgroundColor: running ? Colors.black26 : redColor,
+              onPressed: running
+                  ? () {
+                      Scaffold.of(context).showSnackBar(SnackBar(
+                        content: Text(
+                          'Disabled',
+                          style: disabledTextStyle,
+                        ),
+                        backgroundColor: redColor,
+                        duration: Duration(seconds: 2),
+                      ));
+                    }
+                  : () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => KeywordPage()));
+                    },
+            );
+          }),
+        ));
   }
 
   _changeText() {
