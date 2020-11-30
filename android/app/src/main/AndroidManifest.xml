@@ -7,8 +7,8 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="self_mute_app"
-        android:icon="@mipmap/ic_launcher">
+        android:label="MuteMe"
+        android:icon="@mipmap/ic_selfmute">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

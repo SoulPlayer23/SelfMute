@@ -28,50 +28,71 @@ class _HomeState extends State<Home> {
       ),
       home: Scaffold(
         backgroundColor: bgColor,
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              child: Text(
-                msg,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.w800,
-                    color: mainColor,
-                    fontSize: 35),
-              ),
-            ),
-            SizedBox(
-              height: 25,
-            ),
-            FlatButton(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15.0),
-              ),
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-              color: running ? redColor : greenColor,
-              child: Text(
-                running ? 'STOP' : 'START',
-                style: TextStyle(
-                  fontFamily: 'Cabin',
-                  fontWeight: FontWeight.bold,
-                  fontStyle: FontStyle.italic,
-                  color: Colors.white,
-                  fontSize: 50,
+        body: Builder(
+          builder: (context) => Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                child: Text(
+                  msg,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontFamily: 'Montserrat',
+                      fontWeight: FontWeight.w800,
+                      color: mainColor,
+                      fontSize: 35),
                 ),
               ),
-              onPressed: () {
-                setState(
-                  () {
-                    running = running ? false : true;
-                    _changeText();
-                  },
-                );
-              },
-            )
-          ],
+              SizedBox(
+                height: 25,
+              ),
+              FlatButton(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+                color: running ? redColor : greenColor,
+                child: Text(
+                  running ? 'STOP' : 'START',
+                  style: TextStyle(
+                    fontFamily: 'Cabin',
+                    fontWeight: FontWeight.bold,
+                    fontStyle: FontStyle.italic,
+                    color: Colors.white,
+                    fontSize: 50,
+                  ),
+                ),
+                onPressed: () {
+                  setState(
+                    () {
+                      running = running ? false : true;
+                      _changeText();
+                    },
+                  );
+                  Scaffold.of(context).showSnackBar(SnackBar(
+                    content: running
+                        ? Text(
+                            'The App is running',
+                            style: TextStyle(
+                                fontFamily: 'Montserrat',
+                                fontStyle: FontStyle.italic,
+                                fontSize: 20),
+                          )
+                        : Text(
+                            'The App has stopped',
+                            style: TextStyle(
+                                fontFamily: 'Montserrat',
+                                fontStyle: FontStyle.italic,
+                                fontSize: 20),
+                          ),
+                    backgroundColor: mainColor,
+                    duration: Duration(seconds: 2),
+                  ));
+                },
+              )
+            ],
+          ),
         ),
         floatingActionButton: new Builder(
           builder: (BuildContext context) {
