@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:self_mute_app/home.dart';
+import 'package:self_mute_app/home_page.dart';
 import 'dart:async';
 import 'package:self_mute_app/models/global.dart';
 
@@ -23,12 +23,11 @@ class _SelfMuteState extends State<MyApp> {
     Future.delayed(
       Duration(seconds: 5),
       () {
-        Navigator.pushReplacement(
-          context,
+        /*Navigator.of(context).pushReplacement(
           MaterialPageRoute(
             builder: (context) => Home(),
           ),
-        );
+        );*/
       },
     );
   }
@@ -39,16 +38,26 @@ class _SelfMuteState extends State<MyApp> {
       home: SafeArea(
         child: Scaffold(
           backgroundColor: bgColor,
-          body: Center(
-            child: Text(
-              "MuteMe",
-              style: TextStyle(
-                  fontFamily: 'Cabin',
-                  fontStyle: FontStyle.italic,
-                  fontWeight: FontWeight.w800,
-                  color: mainColor,
-                  fontSize: 80),
-            ),
+          body: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'logo.png',
+              ),
+              Text(
+                'MuteMe',
+                style: TextStyle(
+                    fontFamily: 'Cabin',
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.w800,
+                    color: mainColor,
+                    fontSize: 80),
+              ),
+              SizedBox(
+                width: double.infinity,
+              ),
+            ],
           ),
         ),
       ),
