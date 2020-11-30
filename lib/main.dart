@@ -4,9 +4,11 @@ import 'dart:async';
 import 'package:self_mute_app/models/global.dart';
 
 void main() {
-  runApp(MaterialApp(
-    home: MyApp(),
-  ));
+  runApp(
+    MaterialApp(
+      home: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -19,7 +21,7 @@ class _SelfMuteState extends State<MyApp> {
   void initState() {
     super.initState();
     Future.delayed(
-      Duration(seconds: 3),
+      Duration(seconds: 5),
       () {
         Navigator.pushReplacement(
           context,
@@ -34,12 +36,19 @@ class _SelfMuteState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        backgroundColor: darkGreyColor,
-        body: Center(
-          child: Text(
-            "Self Mute",
-            style: selfMuteStyle,
+      home: SafeArea(
+        child: Scaffold(
+          backgroundColor: bgColor,
+          body: Center(
+            child: Text(
+              "MuteMe",
+              style: TextStyle(
+                  fontFamily: 'Cabin',
+                  fontStyle: FontStyle.italic,
+                  fontWeight: FontWeight.w800,
+                  color: mainColor,
+                  fontSize: 80),
+            ),
           ),
         ),
       ),

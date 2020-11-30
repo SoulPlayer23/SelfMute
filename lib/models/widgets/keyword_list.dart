@@ -12,7 +12,7 @@ class KeywordList extends StatelessWidget {
           color: redColor, borderRadius: BorderRadius.all(Radius.circular(10))),
       child: Center(
         child: TextField(
-          style: keywordTextStyle,
+          style: TextStyle(color: redColor, fontSize: 60),
           controller: _controller,
           decoration: InputDecoration(
             contentPadding: EdgeInsets.only(left: 80),
