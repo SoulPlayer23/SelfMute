@@ -44,6 +44,7 @@ class _SelfMuteState extends State<MyApp> {
             children: [
               Image.asset(
                 'assets/logo.png',
+                scale: 1.25,
               ),
               Text(
                 'MuteMe',

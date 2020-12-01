@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'models/global.dart';
 import 'home_page.dart';
 
@@ -9,6 +10,8 @@ class KeywordPage extends StatefulWidget {
 
 class _KeywordPage extends State<KeywordPage> {
   String name = '';
+  final fieldText = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -27,6 +30,7 @@ class _KeywordPage extends State<KeywordPage> {
               padding: const EdgeInsets.only(
                   left: 50, right: 50, top: 50, bottom: 15),
               child: TextField(
+                controller: fieldText,
                 style: TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
@@ -57,6 +61,7 @@ class _KeywordPage extends State<KeywordPage> {
                 setState(
                   () {
                     if (name != '') names.add(name);
+                    fieldText.clear();
                   },
                 );
               },
@@ -68,23 +73,33 @@ class _KeywordPage extends State<KeywordPage> {
               child: ListView.builder(
                 itemCount: names.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    decoration: BoxDecoration(
-                      color: mainColor,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(5),
+                  return GestureDetector(
+                    onLongPress: () {
+                      setState(
+                        () {
+                          names.removeAt(index);
+                          HapticFeedback.vibrate();
+                        },
+                      );
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: mainColor,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(5),
+                        ),
                       ),
-                    ),
-                    margin: EdgeInsets.symmetric(horizontal: 60, vertical: 3),
-                    padding: EdgeInsets.symmetric(vertical: 2),
-                    child: Center(
-                      child: Text(
-                        '${names[index]}',
-                        style: TextStyle(
-                            fontStyle: FontStyle.italic,
-                            fontWeight: FontWeight.w300,
-                            color: bgColor,
-                            fontSize: 30),
+                      margin: EdgeInsets.symmetric(horizontal: 60, vertical: 3),
+                      padding: EdgeInsets.symmetric(vertical: 2),
+                      child: Center(
+                        child: Text(
+                          '${names[index]}',
+                          style: TextStyle(
+                              fontStyle: FontStyle.italic,
+                              fontWeight: FontWeight.w300,
+                              color: bgColor,
+                              fontSize: 30),
+                        ),
                       ),
                     ),
                   );
