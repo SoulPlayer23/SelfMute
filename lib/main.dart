@@ -23,11 +23,11 @@ class _SelfMuteState extends State<MyApp> {
     Future.delayed(
       Duration(seconds: 5),
       () {
-        /*Navigator.of(context).pushReplacement(
+        Navigator.of(context).pushReplacement(
           MaterialPageRoute(
             builder: (context) => Home(),
           ),
-        );*/
+        );
       },
     );
   }
@@ -43,7 +43,7 @@ class _SelfMuteState extends State<MyApp> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'logo.png',
+                'assets/logo.png',
               ),
               Text(
                 'MuteMe',
